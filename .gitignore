@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+release/
+*.tsbuildinfo
+.DS_Store
+.env
+.env.local
+*.mp3
+*.wav
