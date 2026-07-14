@@ -1,6 +1,6 @@
 # BlackMamba Music
 
-Reproductor y biblioteca privada de BlackMamba Records. Funciona como WebUI local en `/music` y como aplicación de escritorio para macOS. Los audios canónicos pueden permanecer en la USB; el DMG no incorpora MP3 ni WAV.
+Reproductor y biblioteca privada de BlackMamba Records. Funciona como WebUI local en `/` y como aplicación de escritorio para macOS. Los audios canónicos pueden permanecer en la USB; el DMG no incorpora MP3 ni WAV.
 
 ## Estado actual
 
@@ -20,11 +20,7 @@ Reproductor y biblioteca privada de BlackMamba Records. Funciona como WebUI loca
 - Aplicación Electron arm64 y DMG privado sin archivos de audio.
 - Consulta remota de actualizaciones mediante manifiesto; no instala actualizaciones todavía.
 
-El entrenador rítmico histórico continúa disponible en `/`, pero el producto principal de escritorio abre `/music`.
-
-### Entrenamiento rítmico
-
-El nivel medio **Pulso desplazado** está disponible en `/`: diez tareas de dos compases con contratiempos, silencios en tiempos fuertes y entradas en “y”. Permite elegir de 60 a 110 BPM y entrega diagnóstico local de pulso, ritmo, continuidad y anticipación. Cada diagnóstico conserva evidencia, advertencias, confianza y razón de fallback cuando faltan datos.
+Este repositorio contiene exclusivamente el reproductor. El juego de lectura rítmica vive en [Blackmvmba88/OidoPerfecto](https://github.com/Blackmvmba88/OidoPerfecto).
 
 ## Inicio rápido
 
@@ -42,7 +38,7 @@ npm run doctor
 npm run dev
 ```
 
-Abre `http://127.0.0.1:5173/music`.
+Abre `http://127.0.0.1:5173/`.
 
 Aplicación de escritorio:
 
@@ -150,7 +146,7 @@ Toda operación de ingestión debe exponer confianza, evidencia, advertencias y 
 - No borrar audios originales hasta verificar la copia canónica por SHA-256.
 - No aplicar deduplicación únicamente por nombre; usar huella acústica.
 - No incrustar MP3 o WAV en builds públicos o DMG privados.
-- Vite no copia `public/player/*.mp3` ni `public/music/*.mp3`; el build incluye únicamente catálogos y muestras de piano autorizadas.
+- Vite no copia `public/player/*.mp3` ni `public/music/*.mp3`; el build incluye únicamente catálogos y recursos visuales.
 - No asumir que un registro remoto equivale a audio disponible.
 - Mantener fijos artista, autor y sello salvo una directiva explícita del propietario.
 - Ejecutar `npm run typecheck`, `npm test -- --run` y `npm run build` antes de entregar.

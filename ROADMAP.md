@@ -2,30 +2,6 @@
 
 Cada fase se considera terminada sólo con implementación y validación verificable.
 
-## Entrenamiento musical
-
-### Nivel 1 · fundamentos — completado
-
-- Blancas, negras, corcheas, silencios y ligaduras.
-- Diez tareas por sesión, metrónomo audiovisual, entrada global y puntuación local.
-- Canciones tradicionales en tres dificultades con reproducción de piano.
-
-### Nivel 2 · módulo 1: pulso desplazado — completado
-
-- Contratiempos, silencios fuertes y entradas en “y”.
-- Dos compases por tarea y tempo configurable entre 60 y 110 BPM.
-- Métricas explicables de pulso, ritmo, continuidad y anticipación.
-- Evidencia, advertencias, confianza y fallback del análisis.
-
-### Nivel 2 · módulos siguientes
-
-1. Ligaduras y síncopas.
-2. Semicorcheas y lectura continua.
-3. Ritmos con punto.
-4. Tresillos.
-5. Frases musicales de 2, 4, 8 y 16 compases.
-6. Memoria musical y Sight Reading generativo.
-
 ## 0.1 — Biblioteca canónica · completado
 
 - Una carpeta por canción con audio, portada, letra y metadatos.
@@ -37,7 +13,7 @@ Cada fase se considera terminada sólo con implementación y validación verific
 
 ## 0.2 — Reproductor privado · completado
 
-- WebUI `/music` y aplicación Electron para macOS arm64.
+- WebUI `/` y aplicación Electron para macOS arm64.
 - Reproducción, pausa, stop, seek, timeline, volumen, navegación y shuffle.
 - Canción activa centrada en la lista.
 - Calificación de estrellas durante reproducción.

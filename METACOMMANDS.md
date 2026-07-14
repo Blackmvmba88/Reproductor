@@ -6,11 +6,11 @@
 
 ### `ejecuta reproductor`
 
-Ejecuta `npm run doctor`, inicia la WebUI y abre `/music`. Reporta catálogo cargado, USB detectada, confianza y advertencias.
+Ejecuta `npm run doctor`, inicia la WebUI y abre `/`. Reporta catálogo cargado, USB detectada, confianza y advertencias.
 
 ### `abre app`
 
-Ejecuta `npm run desktop:dev`, comprueba que Electron abra `/music` y valida los controles principales.
+Ejecuta `npm run desktop:dev`, comprueba que Electron abra `/` y valida los controles principales.
 
 ### `valida reproductor`
 

@@ -25,7 +25,7 @@ async function createWindow() {
       sandbox: true,
     },
   });
-  window.loadURL(`${media.origin}/music`);
+  window.loadURL(media.origin);
   window.webContents.setWindowOpenHandler(({ url }) => {
     if (/^https?:/.test(url)) shell.openExternal(url);
     return { action: 'deny' };
