@@ -1,69 +1,15 @@
-export interface SessionRecord {
-  id: string;
-  levelId: string;
-  levelTitle: string;
-  score: number;
-  accuracy: number;
-  completedAt: string;
-  taskScores: number[];
+export interface PlayerPreferences { ratings:Record<string,number> }
+const KEY='blackmamba.player.preferences.v1';
+const LEGACY_PROFILE_KEY='pulso.profile.v1';
+const LEGACY_RATINGS_KEY='blackmamba-vitrine-ratings';
+
+const parseRatings=(raw:string|null):Record<string,number>=>{try{const value=JSON.parse(raw??'null');return value&&typeof value==='object'&&!Array.isArray(value)?value:{}}catch{return{}}};
+
+export function loadProfile():PlayerPreferences{
+  const current=parseRatings(localStorage.getItem(KEY));
+  if(Object.keys(current).length)return{ratings:current};
+  try{const legacyProfile=JSON.parse(localStorage.getItem(LEGACY_PROFILE_KEY)??'null') as {ratings?:Record<string,number>}|null;if(legacyProfile?.ratings&&Object.keys(legacyProfile.ratings).length)return{ratings:legacyProfile.ratings}}catch{/* ignore corrupt legacy profile */}
+  return{ratings:parseRatings(localStorage.getItem(LEGACY_RATINGS_KEY))};
 }
-export interface LocalProfile {
-  email: string;
-  displayName: string;
-  roles: ["creator", "player"];
-  sessions: SessionRecord[];
-  ratings: Record<string, number>;
-}
-const KEY = "pulso.profile.v1";
-const DEFAULT: LocalProfile = {
-  email: "neocyber1@gmail.com",
-  displayName: "NeoCyber",
-  roles: ["creator", "player"],
-  sessions: [],
-  ratings: {},
-};
-export function loadProfile(): LocalProfile {
-  try {
-    const parsed = JSON.parse(
-      localStorage.getItem(KEY) || "null",
-    ) as Partial<LocalProfile> | null;
-    let ratings = parsed?.ratings || {};
-    if (Object.keys(ratings).length === 0) {
-      const oldRatings = localStorage.getItem("blackmamba-vitrine-ratings");
-      if (oldRatings) {
-        try {
-          ratings = JSON.parse(oldRatings);
-        } catch {
-          // ignore invalid JSON
-        }
-      }
-    }
-    return parsed && Array.isArray(parsed.sessions)
-      ? {
-          ...DEFAULT,
-          ...parsed,
-          roles: ["creator", "player"],
-          sessions: parsed.sessions,
-          ratings,
-        }
-      : { ...DEFAULT, ratings };
-  } catch {
-    return DEFAULT;
-  }
-}
-export function saveSession(session: SessionRecord) {
-  const profile = loadProfile();
-  if (profile.sessions.some((item) => item.id === session.id)) return profile;
-  const next = {
-    ...profile,
-    sessions: [session, ...profile.sessions].slice(0, 100),
-  };
-  localStorage.setItem(KEY, JSON.stringify(next));
-  return next;
-}
-export function saveRatings(ratings: Record<string, number>) {
-  const profile = loadProfile();
-  const next = { ...profile, ratings };
-  localStorage.setItem(KEY, JSON.stringify(next));
-  return next;
-}
+
+export function saveRatings(ratings:Record<string,number>){localStorage.setItem(KEY,JSON.stringify(ratings));return{ratings}}
