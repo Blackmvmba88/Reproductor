@@ -37,6 +37,7 @@
     "library:transcribe-soundcloud:finalize": "python3 scripts/transcribe-soundcloud-pending.py --finalize-report",
     "library:transcribe-batch": "python3 scripts/transcribe-pending-batch.py",
     "library:prepare-suno": "node scripts/prepare-suno-recovery.mjs",
+    "library:match-suno-local": "node scripts/match-suno-local-catalogs.mjs",
     "library:import-suno": "node scripts/import-suno-enriched.mjs",
     "library:merge-soundcloud": "node scripts/merge-soundcloud-catalog.mjs",
     "library:download-soundcloud": "node scripts/download-soundcloud-tracks.mjs",

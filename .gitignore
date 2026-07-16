@@ -12,3 +12,5 @@ __pycache__/
 *.py[cod]
 *.mp3
 *.wav
+suno-local-matches.json
+suno-local-matches.csv
