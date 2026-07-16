@@ -1130,6 +1130,7 @@ export function App() {
         </a>
         <div className="nav-links">
           <a href="#music">Música</a>
+          <a href="/probables">Probables</a>
           <a className="school-link" href="/school">Escuela de Música</a>
           <a href="#about">Nosotros</a>
         </div>

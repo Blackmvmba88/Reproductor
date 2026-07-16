@@ -598,6 +598,16 @@ async function startMediaServer(appRoot, options = {}) {
         return json(res, 404, { error: "suno_library_not_found" });
       }
     }
+    if (url.pathname === "/api/suno-local-matches") {
+      try {
+        const report = JSON.parse(await fsp.readFile(path.join(appRoot, "suno-local-matches.json"), "utf8"));
+        const status = url.searchParams.get("status");
+        const matches = status ? (report.matches || []).filter((item) => item.status === status) : report.matches || [];
+        return json(res, 200, { matches, total: matches.length, summary: report.summary, generatedAt: report.generatedAt });
+      } catch (error) {
+        return json(res, 404, { error: "suno_local_matches_not_found", fallbackReason: String(error.message || error) });
+      }
+    }
     let filePath = path.join(
       appRoot,
       "dist",
